@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "Yekan";
+  src: url("./fonts/yekan-font/WeblogmaYekan.eot");
+  src: url("./fonts/yekan-font/WeblogmaYekan.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/yekan-font/WeblogmaYekan.woff2") format("woff2"),
+    url("WeblogmaYekan.woff") format("woff"),
+    url("./fonts/yekan-font/WeblogmaYekan.ttf") format("truetype"),
+    url("./fonts/yekan-font/WeblogmaYekan.svg#WeblogmaYekan") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --clr-primary-1: #f1f5f8;
+  --clr-primary-2: #063251;
+  --clr-primary-3: #a5d5f8;
+  --clr-primary-4: #617d98;
+  --clr-white: #ffffff;
+  --clr-red: #e74c3c;
+  --clr-green: #27ae60;
+  --box-shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --box-shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --font-family-primary: "Yekan", sans-serif;
+  --border-radius-low: 5px;
+  --border-radius-hi: 10px;
+  --border-radius-circle: 100%;
+  --transition-linear: all 0.3 linear;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+* button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--clr-primary-1);
+  min-height: 100vh;
+  direction: rtl;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 100vw;
+  /* min-height: 40vh; */
+  max-height: 70vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  row-gap: 20px;
+  min-width: 40vw;
+  min-height: 100%;
+  background-color: var(--clr-white);
+  box-shadow: var(--box-shadow-light);
+  border-radius: var(--border-radius-low);
+  padding: 15px 50px;
+  margin-top: 100px;
+}
+
+.main-container .header-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.alert {
+  color: var(--clr-red);
+  font-size: 1.1rem;
+  font-weight: 600;
+  animation: alert 1s linear 0.1s infinite alternate-reverse;
+}
+@keyframes alert {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.main-container .header-container h1 {
+  color: var(--clr-primary-2);
+  font-size: 2rem;
+}
+
+.main-container .todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container .input-todo {
+  flex: 10 0;
+  border: none;
+  background-color: var(--clr-primary-1);
+  color: var(--clr-primary-4);
+  padding: 0.5rem 1.2rem;
+  font-size: 1.7rem;
+  font-family: inherit;
+  border-radius: var(--border-radius-low);
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.main-container .button-todo {
+  flex: 2 0;
+  background-color: var(--clr-primary-3);
+  padding: 0.65rem 1rem;
+  border-radius: var(--border-radius-low);
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  max-height: 50vh;
+}
+
+.item-todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.item-container {
+  align-self: stretch;
+  padding: 10px 5px;
+  margin-top: 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-linear);
+  border-radius: var(--border-radius-low);
+}
+
+.item-container:hover {
+  background-color: var(--clr-primary-3);
+}
+
+.item-container h4 {
+  flex: 10 0;
+  font-size: 1.5rem;
+  color: var(--clr-primary-2);
+}
+
+.item-container button {
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+.item-container button:nth-child(2) {
+  flex: 1 0;
+  color: var(--clr-red);
+}
+.item-container button:nth-child(3) {
+  flex: 1 0;
+  color: var(--clr-green);
+}
+
+.clear-container {
+  padding: 20px 0px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-container button {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-low);
+}
