@@ -1,79 +1,112 @@
-//Selectors
-
+//----Selectors----
 const inputToDo = document.querySelector(".input-todo");
 const buttonToDo = document.querySelector(".button-todo");
 const itemTodoContainer = document.querySelector(".item-todo-container");
 const clearAllButton = document.querySelector(".clear-all-container");
+const alertAndWarn = document.querySelector(".alert");
 
-class CreateItemTodo {
-  constructor() {}
+//*----Function----*//
 
-  ui() {
-    const itemTodo = document.createElement("div");
-    const titleTodoItem = document.createElement("h1");
-    const editTodoItem = document.createElement("i");
-    const trashTodoItem = document.createElement("i");
-    itemTodo.classList.add("item-todo");
-    itemTodoContainer.appendChild(itemTodo);
+//CreateElement
 
-    titleTodoItem.innerText = inputToDo.value;
-    itemTodo.appendChild(titleTodoItem);
-    editTodoItem.classList.add("fa-solid", "fa-pen-to-square");
-    itemTodo.appendChild(editTodoItem);
-    trashTodoItem.classList.add("fa-solid", "fa-trash");
-    itemTodo.appendChild(trashTodoItem);
-  }
-}
+const createItemTodo = () => {
+  const htmlItem = `<div class="item-todo"><h1>${inputToDo.value}</h1><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></div>`;
+  localStorage.setItem(new Date().getTime(), JSON.stringify({ element: htmlItem }));
+  const keys = Object.keys(localStorage).sort((a, b) => a - b);
+  const saved = JSON.parse(localStorage.getItem(keys[keys.length - 1]));
+  itemTodoContainer.innerHTML += saved.element;
+};
 
-const createItemTodo = new CreateItemTodo();
+//Alert
 
-//Function
+const alert = (data) => {
+  document.styleSheets[4].cssRules[8].style.visibility = "visible";
+  alertAndWarn.innerText = data.massage;
+  document.styleSheets[4].cssRules[8].style.color = data.color;
+  document.styleSheets[4].cssRules[8].style.animationPlayState = "running";
+  setTimeout(() => {
+    document.styleSheets[4].cssRules[8].style.visibility = "hidden";
+    document.styleSheets[4].cssRules[8].style.animationPlayState = "paused";
+  }, 1000);
+};
+
+//Function EvetnListener
 
 const buttonTodoHandler = (event) => {
   event.preventDefault();
   if (inputToDo.value !== "" && inputToDo.id != "2") {
-    createItemTodo.ui();
+    createItemTodo();
     inputToDo.value = "";
+    alert({ color: "#27ae60", massage: "یک مورد به لیست کارها اضافه شد." });
   } else if (inputToDo.value !== "" && inputToDo.id == "2") {
-    eventRefer.path[1].children[0].innerText = inputToDo.value;
+    const keys = Object.keys(localStorage).sort((a, b) => a - b);
+    for (item of keys) {
+      const saved = JSON.parse(localStorage.getItem(item));
+      if (saved.element.includes(eventRefer.path[1].children[0].innerText)) {
+        eventRefer.path[1].children[0].innerText = inputToDo.value;
+        localStorage.setItem(item, JSON.stringify({ element: eventRefer.path[1].outerHTML }));
+      }
+    }
     inputToDo.value = "";
+    alert({ color: "#27ae60", massage: "ویرایش با موفقیت انجام شد." });
   } else {
-    console.log("hello");
+    alert({
+      color: "#e74c3c",
+      massage: "یک عنوان برای کار موردنظر وارد نمایید.",
+    });
   }
 
+  inputToDo.id = "1";
+};
+
+//*----EventListeners----*//
+
+buttonToDo.addEventListener("click", buttonTodoHandler, false);
+
+//*----observer----*//
+const observer = new MutationObserver((mutationsList, observer) => {
   const editTodoItemQuery = document.querySelectorAll(".fa-pen-to-square");
   const trashTodoItemQuery = document.querySelectorAll(".fa-trash");
+  for (item of trashTodoItemQuery) {
+    //EventsListener for Remove Item
+
+    item.addEventListener("click", (event) => {
+      const keys = Object.keys(localStorage);
+      for (item of keys) {
+        const saved = JSON.parse(localStorage.getItem(item));
+        if (event.path[1].outerHTML == saved.element) {
+          localStorage.removeItem(item);
+        }
+      }
+      event.path[1].remove();
+
+      alert({
+        color: "#e74c3c",
+        massage: "یک مورد از لیست کارها با موفقیت حذف شد.",
+      });
+    });
+  }
+
   for (item of editTodoItemQuery) {
+    //EventsListener for Edit
+
     item.addEventListener("click", (e) => {
       inputToDo.value = e.path[1].children[0].innerText;
       inputToDo.focus();
       inputToDo.id = "2";
       window.eventRefer = e;
     });
-    inputToDo.id = "1";
   }
 
-  for (item of trashTodoItemQuery) {
-    item.addEventListener("click", (event) => {
-      event.path[1].remove();
+  for (const mutation of mutationsList) {
+    clearAllButton.addEventListener("click", () => {
+      for (item of mutation.addedNodes) {
+        localStorage.clear();
+        item.remove();
+        alert({ color: "#e74c3c", massage: "تمامی موارد با موفقیت حذف شدند." });
+      }
     });
   }
-};
-
-//EventListener
-
-buttonToDo.addEventListener("click", buttonTodoHandler);
-
-// observer
-
-const observer = new MutationObserver((mutationsList, observer) => {
-  clearAllButton.addEventListener("click", () => {
-    for (const mutation of mutationsList) {
-      for (item of mutation.addedNodes) {
-        item.remove();
-      }
-    }
-  });
 
   itemTodoContainer.children.length == "0"
     ? (clearAllButton.style.display = "none")
@@ -85,3 +118,11 @@ observer.observe(itemTodoContainer, {
   childList: true,
   subtree: false,
 });
+
+const keys = Object.keys(localStorage).sort((a, b) => a - b);
+for (item of keys) {
+  const saved = JSON.parse(localStorage.getItem(item));
+  if (saved) {
+    itemTodoContainer.innerHTML += saved.element;
+  }
+}
