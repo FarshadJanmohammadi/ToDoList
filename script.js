@@ -36,7 +36,8 @@ const alert = (data) => {
 
 const buttonTodoHandler = (event) => {
   event.preventDefault();
-  if (inputToDo.value !== "" && inputToDo.id != "2") {
+  const avoidSpace = inputToDo.value.endsWith(" ") && inputToDo.value.startsWith(" ");
+  if (inputToDo.value !== "" && inputToDo.id != "2" && !avoidSpace) {
     createItemTodo();
     inputToDo.value = "";
     alert({ color: "#27ae60", massage: "یک مورد به لیست کارها اضافه شد." });
@@ -52,6 +53,7 @@ const buttonTodoHandler = (event) => {
     inputToDo.value = "";
     alert({ color: "#27ae60", massage: "ویرایش با موفقیت انجام شد." });
   } else {
+    inputToDo.value = "";
     alert({
       color: "#e74c3c",
       massage: "یک عنوان برای کار موردنظر وارد نمایید.",
