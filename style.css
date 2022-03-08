@@ -270,15 +270,20 @@ footer a i {
   }
 
   .item-todo {
-    padding-left: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .item-todo h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .item-todo i:nth-child(2) {
-    margin-left: 8px;
+    margin-left: 12px;
+  }
+
+  .item-todo-container::-webkit-scrollbar {
+    width: 7px;
   }
   .main-container .header-container h1 {
     font-size: 1.5rem;
@@ -296,7 +301,7 @@ footer a i {
   }
 
   .clear-all-container button {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   footer {
