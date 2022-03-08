@@ -262,10 +262,23 @@ footer a i {
 
 @media screen and (max-width: 480px) {
   .main-container {
-    max-width: 90vw;
+    width: 90vw;
   }
   .alert {
     font-size: 0.8rem;
+    margin-top: 10px;
+  }
+
+  .item-todo {
+    padding-left: 2px;
+  }
+
+  .item-todo h1 {
+    font-size: 1rem;
+  }
+
+  .item-todo i:nth-child(2) {
+    margin-left: 8px;
   }
   .main-container .header-container h1 {
     font-size: 1.5rem;
@@ -273,16 +286,20 @@ footer a i {
 
   .main-container .input-todo {
     flex: 3 1 0;
-    padding: 0.5rem calc(1.2rem - 0.8rem);
-    font-size: calc(1.7rem - 0.5rem);
+    padding: calc(0.5rem + 0.3rem) calc(1.2rem - 0.8rem);
+    font-size: calc(1.7rem - 0.3rem);
   }
   .main-container .button-todo {
     flex: 1 1 0;
-    padding: 0.65rem calc(1rem - 0.5rem);
-    font-size: calc(1.5rem - 0.5rem);
+    padding: calc(0.65rem + 0.3rem) calc(1rem - 0.2rem);
+    font-size: calc(1.5rem - 0.3rem);
+  }
+
+  .clear-all-container button {
+    font-size: 1rem;
   }
 
   footer {
-    font-size:0.8rem ;
+    font-size: 0.8rem;
   }
 }
