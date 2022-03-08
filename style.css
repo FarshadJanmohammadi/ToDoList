@@ -306,5 +306,6 @@ footer a i {
 
   footer {
     font-size: 0.8rem;
+    position: fixed;
   }
 }
