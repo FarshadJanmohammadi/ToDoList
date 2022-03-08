@@ -4,7 +4,7 @@ const buttonToDo = document.querySelector(".button-todo");
 const itemTodoContainer = document.querySelector(".item-todo-container");
 const clearAllButton = document.querySelector(".clear-all-container");
 const alertAndWarn = document.querySelector(".alert");
-const footerElement = document.querySelector("footer");
+const pageLoader = document.querySelector(".page-load");
 
 //*----Function----*//
 
@@ -69,8 +69,14 @@ const focusHendler = (event) => {
   }
 };
 
-//*----EventListeners----*//
+const DOMLoadedHanler = () => {
+  setTimeout(() => {
+    pageLoader.style.display = "none";
+  }, 1000);
+};
 
+//*----EventListeners----*//
+window.addEventListener("DOMContentLoaded", DOMLoadedHanler,{once:true});
 buttonToDo.addEventListener("click", buttonTodoHandler, false);
 inputToDo.addEventListener("focus", focusHendler);
 inputToDo.addEventListener("blur", focusHendler);

@@ -56,6 +56,61 @@ body {
   direction: rtl;
 }
 
+.page-load {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(11, 230, 238);
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.animation-div {
+  width: 70px;
+  height: 70px;
+  border: 2px solid white;
+
+  /* background: conic-gradient(#ffffff 0, transparent 0); */
+
+  /* background: linear-gradient(90deg, #ffffff 50%, transparent 50%); */
+  /* transform: rotate(0); */
+  /* background: linear-gradient(360deg, #ffffff 10%, transparent 90%); */
+  background: conic-gradient(#ffffff 10%, transparent 0);
+
+  animation: animate-page-loader 0.8s linear infinite forwards;
+  border-radius: 50%;
+}
+
+.animattion-p {
+  font-size: 1rem;
+  color: white;
+}
+
+@keyframes animate-page-loader {
+  25% {
+    transform: rotate(90deg);
+    background: conic-gradient(#ffffff 10%, transparent 0);
+  }
+  50% {
+    transform: rotate(180deg);
+    /* background: conic-gradient( #ffffff 50%, transparent 0); */
+    background: conic-gradient(#ffffff 10%, transparent 0);
+  }
+  75% {
+    transform: rotate(270deg);
+    /* background: conic-gradient( #ffffff 75%, transparent 0); */
+    background: conic-gradient(#ffffff 10%, transparent 0);
+  }
+  100% {
+    transform: rotate(360deg);
+    /* background: conic-gradient(#ffffff 100%, transparent 0); */
+    background: conic-gradient(#ffffff 10%, transparent 0);
+  }
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -224,7 +279,7 @@ body {
 }
 
 footer {
-  
+  z-index: 1;
   width: 100%;
   position: absolute;
   bottom: 10px;
