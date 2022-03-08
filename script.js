@@ -22,13 +22,13 @@ const createItemTodo = () => {
 //Alert
 
 const alert = (data) => {
-  document.styleSheets[4].cssRules[8].style.visibility = "visible";
+  document.styleSheets[4].cssRules[12].style.visibility = "visible";
   alertAndWarn.innerText = data.massage;
-  document.styleSheets[4].cssRules[8].style.color = data.color;
-  document.styleSheets[4].cssRules[8].style.animationPlayState = "running";
+  document.styleSheets[4].cssRules[12].style.color = data.color;
+  document.styleSheets[4].cssRules[12].style.animationPlayState = "running";
   setTimeout(() => {
-    document.styleSheets[4].cssRules[8].style.visibility = "hidden";
-    document.styleSheets[4].cssRules[8].style.animationPlayState = "paused";
+    document.styleSheets[4].cssRules[12].style.visibility = "hidden";
+    document.styleSheets[4].cssRules[12].style.animationPlayState = "paused";
   }, 1000);
 };
 
