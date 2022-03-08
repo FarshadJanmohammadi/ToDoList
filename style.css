@@ -269,11 +269,11 @@ body {
 }
 
 footer {
-  z-index: 1;
   width: 100%;
   position: absolute;
   bottom: 10px;
   text-align: center;
+  z-index: 1;
 }
 
 footer a {

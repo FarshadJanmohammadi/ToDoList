@@ -4,6 +4,7 @@ const buttonToDo = document.querySelector(".button-todo");
 const itemTodoContainer = document.querySelector(".item-todo-container");
 const clearAllButton = document.querySelector(".clear-all-container");
 const alertAndWarn = document.querySelector(".alert");
+const footerElement = document.querySelector("footer");
 const pageLoader = document.querySelector(".page-load");
 
 //*----Function----*//
@@ -60,26 +61,29 @@ const buttonTodoHandler = (event) => {
   inputToDo.id = "1";
 };
 
-const focusHendler = (event) => {
-  console.log(event.path[4].children[1].style.display);
-  if (window.innerWidth < 480) {
-    event.path[4].children[1].style.display == "block"
-      ? (event.path[4].children[1].style.display = "none")
-      : (event.path[4].children[1].style.display = "block");
-  }
-};
-
 const DOMLoadedHanler = () => {
   setTimeout(() => {
     pageLoader.style.display = "none";
-  }, 1000);
+  }, 2000);
+};
+
+const focusHendler = () => {
+  if (window.innerWidth < 480) {
+    footerElement.style.display = "none";
+  }
+};
+
+const blurHendler = () => {
+  if (window.innerWidth < 480) {
+    footerElement.style.display = "block";
+  }
 };
 
 //*----EventListeners----*//
-window.addEventListener("DOMContentLoaded", DOMLoadedHanler,{once:true});
+window.addEventListener("DOMContentLoaded", DOMLoadedHanler);
 buttonToDo.addEventListener("click", buttonTodoHandler, false);
 inputToDo.addEventListener("focus", focusHendler);
-inputToDo.addEventListener("blur", focusHendler);
+inputToDo.addEventListener("blur", blurHendler);
 
 //*----observer----*//
 const observer = new MutationObserver((mutationsList, observer) => {
