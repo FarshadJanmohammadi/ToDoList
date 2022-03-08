@@ -64,7 +64,7 @@ const buttonTodoHandler = (event) => {
 const DOMLoadedHanler = () => {
   setTimeout(() => {
     pageLoader.style.display = "none";
-  }, 2000);
+  }, 1200);
 };
 
 const focusHendler = () => {
