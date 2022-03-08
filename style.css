@@ -224,7 +224,7 @@ body {
 }
 
 footer {
-  display: block;
+  
   width: 100%;
   position: absolute;
   bottom: 10px;
@@ -293,6 +293,9 @@ footer a i {
     flex: 3 1 0;
     padding: calc(0.5rem + 0.3rem) calc(1.2rem - 0.8rem);
     font-size: calc(1.7rem - 0.3rem);
+  }
+  .main-container .input-todo:focus {
+ 
   }
   .main-container .button-todo {
     flex: 1 1 0;
