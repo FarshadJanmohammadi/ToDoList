@@ -134,6 +134,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
         localStorage.clear();
         item.remove();
         alert({ color: "#e74c3c", massage: "تمامی موارد با موفقیت حذف شدند." });
+        inputToDo.value = "";
       }
     });
   }
