@@ -2,7 +2,8 @@
 const inputToDo = document.querySelector(".input-todo");
 const buttonToDo = document.querySelector(".button-todo");
 const itemTodoContainer = document.querySelector(".item-todo-container");
-const clearAllButton = document.querySelector(".clear-all-container");
+const clearAllButton = document.querySelector("#clear-all");
+const clearAllContainer = document.querySelector(".clear-all-container");
 const alertAndWarn = document.querySelector(".alert");
 const footerElement = document.querySelector("footer");
 const pageLoader = document.querySelector(".page-load");
@@ -42,14 +43,19 @@ const buttonTodoHandler = (event) => {
     inputToDo.value = "";
     alert({ color: "#27ae60", massage: "یک مورد به لیست کارها اضافه شد." });
   } else if (inputToDo.value !== "" && inputToDo.id == "2") {
+    console.log(eventRefer);
     const keys = Object.keys(localStorage).sort((a, b) => a - b);
     for (item of keys) {
       const saved = JSON.parse(localStorage.getItem(item));
-      if (saved.element.includes(eventRefer.path[1].children[0].innerText)) {
-        eventRefer.path[1].children[0].innerText = inputToDo.value;
-        localStorage.setItem(item, JSON.stringify({ element: eventRefer.path[1].outerHTML }));
+      if (saved.element.includes(eventRefer.target.parentElement.children[0].innerText)) {
+        eventRefer.target.parentElement.children[0].innerText = inputToDo.value;
+        localStorage.setItem(
+          item,
+          JSON.stringify({ element: eventRefer.target.parentElement.outerHTML })
+        );
       }
     }
+
     inputToDo.value = "";
     alert({ color: "#27ae60", massage: "ویرایش با موفقیت انجام شد." });
   } else {
@@ -98,11 +104,11 @@ const observer = new MutationObserver((mutationsList, observer) => {
       const keys = Object.keys(localStorage);
       for (item of keys) {
         const saved = JSON.parse(localStorage.getItem(item));
-        if (event.path[1].outerHTML == saved.element) {
+        if (event.target.parentElement.outerHTML == saved.element) {
           localStorage.removeItem(item);
         }
       }
-      event.path[1].remove();
+      event.target.parentElement.remove();
 
       alert({
         color: "#e74c3c",
@@ -115,7 +121,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
     //EventsListener for Edit
 
     item.addEventListener("click", (e) => {
-      inputToDo.value = e.path[1].children[0].innerText;
+      inputToDo.value = e.target.parentElement.children[0].innerText;
       inputToDo.focus();
       inputToDo.id = "2";
       window.eventRefer = e;
@@ -133,8 +139,8 @@ const observer = new MutationObserver((mutationsList, observer) => {
   }
 
   itemTodoContainer.children.length == "0"
-    ? (clearAllButton.style.display = "none")
-    : (clearAllButton.style.display = "flex");
+    ? (clearAllContainer.style.display = "none")
+    : (clearAllContainer.style.display = "flex");
 });
 
 observer.observe(itemTodoContainer, {
