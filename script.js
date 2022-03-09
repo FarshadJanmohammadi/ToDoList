@@ -7,6 +7,7 @@ const clearAllContainer = document.querySelector(".clear-all-container");
 const alertAndWarn = document.querySelector(".alert");
 const footerElement = document.querySelector("footer");
 const pageLoader = document.querySelector(".page-load");
+const headerTitle = document.querySelector(".header-container h1");
 
 //*----Function----*//
 
@@ -76,22 +77,30 @@ const DOMLoadedHanler = () => {
 };
 
 const focusHendler = () => {
-  if (window.innerWidth < 480) {
+  if (window.innerWidth < 800) {
     footerElement.style.display = "none";
   }
 };
 
 const blurHendler = () => {
-  if (window.innerWidth < 480) {
+  if (window.innerWidth < 800) {
     footerElement.style.display = "block";
   }
 };
+
+// const orientedHandler = () => {
+//   inputToDo.addEventListener("focus", () => {
+//     footerElement.remove();
+//     headerTitle.style.display = "none";
+//   });
+// };
 
 //*----EventListeners----*//
 window.addEventListener("DOMContentLoaded", DOMLoadedHanler);
 buttonToDo.addEventListener("click", buttonTodoHandler, false);
 inputToDo.addEventListener("focus", focusHendler);
 inputToDo.addEventListener("blur", blurHendler);
+// window.addEventListener("orientationchange", orientedHandler);
 
 //*----observer----*//
 const observer = new MutationObserver((mutationsList, observer) => {
