@@ -88,13 +88,6 @@ const blurHendler = () => {
   }
 };
 
-// const orientedHandler = () => {
-//   inputToDo.addEventListener("focus", () => {
-//     footerElement.remove();
-//     headerTitle.style.display = "none";
-//   });
-// };
-
 //*----EventListeners----*//
 window.addEventListener("DOMContentLoaded", DOMLoadedHanler);
 buttonToDo.addEventListener("click", buttonTodoHandler, false);
