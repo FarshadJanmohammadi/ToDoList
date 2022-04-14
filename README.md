@@ -6,7 +6,7 @@ Made a Todo using Vinilla JavaScript and using Local Stroge To store lists that 
 
 ## Screenshots
 
-![App Screenshot1](https://github.com/FarshadJanmohammadi/images/blob/main/ToDoList.jpg?raw=true)
+![App Screenshot1](https://github.com/FarshadJanmohammadi/images/blob/main/todo.jpg?raw=true)
 
 
 
@@ -18,7 +18,6 @@ https://clever-wing-633125.netlify.app
 ## Authors
 
 - [Farshad Janmohammadi](https://www.FarshadJanmohammadi.ir)
-- 
 
 ## Color Reference
 
@@ -32,8 +31,6 @@ https://clever-wing-633125.netlify.app
 | Example Color | ![#e74c3c](https://via.placeholder.com/10/e74c3c?text=+) #e74c3c |
 | Example Color | ![#27ae60](https://via.placeholder.com/10/2980b9?text=+) #27ae60 |
 | Example Color | ![#2d3436](https://via.placeholder.com/10/2d3436?text=+) #2d3436 |
-
-
 
 
 
