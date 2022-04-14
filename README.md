@@ -3,9 +3,22 @@
 Made a Todo using Vinilla JavaScript and using Local Stroge To store lists that the user enters.
 
 
+
+## Screenshots
+
+![App Screenshot1](https://github.com/FarshadJanmohammadi/images/blob/main/ToDoList.jpg?raw=true)
+
+
+
+## Demo
+
+https://clever-wing-633125.netlify.app
+
+
 ## Authors
 
-- [@FarshadJanmohammadi](https://www.github.com/farshadjanmohammadi)
+- [Farshad Janmohammadi](https://www.FarshadJanmohammadi.ir)
+- 
 
 ## Color Reference
 
@@ -22,10 +35,6 @@ Made a Todo using Vinilla JavaScript and using Local Stroge To store lists that 
 
 
 
-## Demo
-
-Insert gif or link to demo:
-https://clever-wing-633125.netlify.app
 
 
 ## 🚀 About Me
